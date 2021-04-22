@@ -1,0 +1,150 @@
+
+<%@page import="comm.FP"%>
+<%@page import="java.util.*"%>
+<%@page import="comm.Path"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"%>
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Efficiently mining frequent itemsets on massive data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content=""> <meta name="author"
+content="">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="color/default.css" rel="stylesheet">
+<link rel="shortcut icon" href="img/favicon.ico">
+<!- - ==============================================
+
+
+FP.java
+packagecomm;
+importjava.io.BufferedReader;
+importjava.io.FileReader;
+importjava.util.*;
+importjava.util.Map.Entry;
+public class FP {
+/*public static void main(String[] args){
+read("C:/Users/Divya.Y/Desktop/c.csv");
+}
+public static LinkedHashMap<String, Integer> read(String fname){
+LinkedHashMap<String, Integer> lhm1 = new
+LinkedHashMap<String, Integer>(); try{
+int k = 0;
+BufferedReaderbr = new
+BufferedReader(new FileReader(fname));
+String s = "";
+br.readLine(); while((s = br.readLine())!=null){
+for(int i=0;i<s.split(",").length;i++){
+if(!s.split("")[].isEmpty()){
+lhm1.put(s.split(" ")[i],
+lhm1.get(s.split("")[i])==null?1:lhm1.get
+(s.split("")[i])+1);
+}
+}
+lhm1.put(s, lhm1.get(s)==null?1:lhm1.get(s)+1);
+}
+}
+catch(Exception e){
+e.printStackTrac 
+e();
+}
+return lhm1;
+}*/
+private static ArrayListar = new ArrayList(); private
+static ArrayList ar1 = new ArrayList(); private
+static ArrayList ar2 = new ArrayList();
+public static void main(String[] args) {
+read1("C:/Users/YMTS0174/Desktop/");
+}
+public static LinkedHashMap<String, Double> read1(String fname)
+{
+ ar.clear();
+ar1.clear();
+ar2.clear();
+LinkedHashMap<Integer, String>lhm = new LinkedHashMap<Integer,
+String>(); SortedSet lhs = new TreeSet();
+try{
+int k = 0;
+BufferedReaderbr = new BufferedReader(new FileReader(fname));
+String s = "";
+br.readLine();
+while((s = br.readLine())!=null){
+for(int i=0;i<s.split("
+").length;i++){ lhs.add(s.spli
+t(" ")[i].trim());
+}
+lhm.put(k++, s);
+}
+}catch(Exception e){
+e.printStackTrace();
+}
+System.out.println("Hashset===="+lhs.size());
+System.out.println("Linked========"+lhm);
+Iterator ite1 = lhs.iterator();
+while(ite1.hasNext()){
+ar.add(ite1.next().toString());
+}
+System.out.println("Size
+Size======"+ar.size()); combine1();
+LinkedHashSet lhs1 = new LinkedHashSet(ar2);
+System.out.println("Size======"+lhs1.size());
+double threshold = BD.Binomial(fname);
+System.out.println("Threshold====="+threshold);
+LinkedHashMap<String, Double> lhm1 = new LinkedHashMap<String,
+Double>(); Iterator ite = lhs1.iterator();
+while(ite.hasNext()){
+String st = ite.next().toString();
+int count = 0;
+for(Entry<Integer, String> entry :
+lhm.entrySet()){ intlen = st.split(" ").length;
+int co = 0;
+String stt = entry.getValue().toString();
+for(int j=0;j<stt.split(" ").length;j++){
+if(st.contains(stt.split("
+")[j])){ co++;
+}
+}
+if(len==co){
+count++;
+}
+}
+System.out.println("Count==="+((double)count/934)+"====="+-
+((double)threshold/1000000000));
+if((double)count/934>-
+((double)threshold/1000000000)){ lhm1.put(st,
+(double)count/934);
+}
+}
+System.out.println("Linked=="+lhm1.size());
+return lhm1;
+}
+public static void combine1()
+{ combine1( 0 );
+}
+private static void combine1(int
+start ){ for(int i = start; i
+<ar.size(); ++i ){
+//output.append(ar.get(i));
+// System.out.println( output );
+ar1.add(ar.get(i));
+String st = "";
+for(int r=0;r<ar1.size();r++){
+st +=ar1.get(r)+" ";
+}
+ar2.add(st);
+System.out.println(ar1);
+// output1.append(output+" ");
+//System.out.println(output1);
+if ( i <ar.size() )
+combine1( i + 1);
+ar1.remove(ar1.size()-1);
+// ar1.subList(0, ar1.size()-1);
+// ar1.clear();
+// output.setLength(output.length() - 1 );
+//System.out.println("length=="+(output.length() - 1)
+}
+}
+}

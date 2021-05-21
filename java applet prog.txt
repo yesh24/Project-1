@@ -1,3 +1,4 @@
+JAVA APPLET BY HTML FILE
 JAVA APPLET PROGRAM
 import java.applet.Applet;  
 import java.awt.Graphics;  
